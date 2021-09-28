@@ -13,6 +13,7 @@ class UserView():
     def get_favorite_movies(self, user):
         return user.get_favoriteMovies()
 
+
     def add_favorite_movies(self, user):
         id = input("Qual id do filme que deseja adicionar ? ")
         for movie in user.get_favoriteMovies():

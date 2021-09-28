@@ -38,90 +38,94 @@ class Main():
         
 main = Main()
 answer = main.menu() 
+out = False
 
-while answer != 3 and main._user.get_name() == "":
+while out == False :
+    while answer != 3 and main._user.get_name() == "":
 
-    if main._user.get_name() == "" :
+        if main._user.get_name() == "" :
+
+            if answer == '1' :
+                res = main._main_view.login()
+                if res != None:
+                    main.set_user(res)
+                    print (" Logado ")
+                else : 
+                    print (" Ocorreu um problema ")
+
+            if answer == '2' :
+                res = main._main_view.register()
+                if res != None:
+                    main.set_user(res)
+                    print (" Logado ")
+                else : 
+                    print (" Ocorreu um problema ")
+
+            if answer == '3' :
+                out = True
+                print (" Volte sempre ! ^^ \n\n")
+                break
+
+        answer = main.menu()
+    # and  not main._user.get_name().startswith("admin")
+    while answer != 6 and main._user.get_name() != "" :
 
         if answer == '1' :
-            res = main._main_view.login()
-            if res != None:
-                main.set_user(res)
-                print (" Logado ")
-            else : 
-                print (" Ocorreu um problema ")
+            print ("\nFILMES: ")
+            movies = main._user_view.get_movies()
+            for m in movies :
+                print ( m.get_key() , " )  " , m.get_name() , " - " , m.get_year() )
+            print ("\n")
 
         if answer == '2' :
-            res = main._main_view.register()
-            if res != None:
-                main.set_user(res)
-                print (" Logado ")
-            else : 
-                print (" Ocorreu um problema ")
+            print ("\nFavoritos:  ")
+            movies  = main._user_view.get_favorite_movies(main._user)
+            for m in movies :
+                print ( m.get_key() , " )  " , m.get_name() , " - " , m.get_year() )
+            print ("\n")
 
         if answer == '3' :
+
+            print ("\nFILMES: ")
+            movies = main._user_view.get_movies()
+            for m in movies :
+                print ( m.get_key() , " )  " , m.get_name() , " - " , m.get_year() )
+            print ("\n")
+
+            res = main._user_view.add_favorite_movies(main._user)
+            if res != None:
+                print ("\nAdicionando Filme Favorito  ")
+                main.set_user(res)
+            else:
+                print("Ocorreu um problema")
+            print ("\n")
+
+        if answer == '4' :
+                    
+            print ("\nFavoritos:  ")
+            movies  = main._user_view.get_favorite_movies(main._user)
+            for m in movies :
+                print ( m.get_key() , " )  " , m.get_name() , " - " , m.get_year() )
+            print ("\n")
+
+            res = main._user_view.rem_favorite_movies(main._user)
+            if res != None:
+                print ("\nRemovendo Filme Favorito  ")
+                main.set_user(res)
+            else:
+                print("Ocorreu um problema")
+            print ("\n")
+
+        if answer == '5' :
             print (" Volte sempre ! ^^ \n\n")
-            break
-
-    answer = main.menu()
-# and  not main._user.get_name().startswith("admin")
-while answer != 6 and main._user.get_name() != "" :
-
-    if answer == '1' :
-        print ("\nFILMES: ")
-        movies = main._user_view.get_movies()
-        for m in movies :
-            print ( m.get_key() , " )  " , m.get_name() , " - " , m.get_year() )
-        print ("\n")
-
-    if answer == '2' :
-        print ("\nFavoritos:  ")
-        movies  = main._user_view.get_favorite_movies(main._user)
-        for m in movies :
-            print ( m.get_key() , " )  " , m.get_name() , " - " , m.get_year() )
-        print ("\n")
-
-    if answer == '3' :
-
-        print ("\nFILMES: ")
-        movies = main._user_view.get_movies()
-        for m in movies :
-            print ( m.get_key() , " )  " , m.get_name() , " - " , m.get_year() )
-        print ("\n")
-
-        res = main._user_view.add_favorite_movies(main._user)
-        if res != None:
-            print ("\nAdicionando Filme Favorito  ")
-            main.set_user(res)
-        else:
-            print("Ocorreu um problema")
-        print ("\n")
-
-    if answer == '4' :
-                
-        print ("\nFavoritos:  ")
-        movies  = main._user_view.get_favorite_movies(main._user)
-        for m in movies :
-            print ( m.get_key() , " )  " , m.get_name() , " - " , m.get_year() )
-        print ("\n")
-
-        res = main._user_view.rem_favorite_movies(main._user)
-        if res != None:
-            print ("\nRemovendo Filme Favorito  ")
-            main.set_user(res)
-        else:
-            print("Ocorreu um problema")
-        print ("\n")
-
-    if answer == '5' :
-        print (" Volte sempre ! ^^ \n\n")
-        main.set_user(Person("",""))
-        
-    if answer == '6' :
-        print (" Volte sempre ! ^^ \n\n")
-        break 
-        
-    answer = main.menu()
+            main.set_user(Person("",""))
+            
+        if answer == '6' :
+            out = True
+            print (" Volte sempre ! ^^ \n\n")
+            break 
+            
+        answer = main.menu()
 
 
 

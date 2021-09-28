@@ -1,9 +1,17 @@
 from model.Movie import Movie
+from model.User import User
 
-class MovieController():
+
+class UserController():
     
     def __init__(self):
-        self._movies = [Movie("Avengers", "2012"), Movie("Moana", "2016")]
+        self._users = [User("ana", "123", 0)]
 
-    def get_movies(self):
-        return self._movies
+    def get_users(self):
+        return self._users
+    
+    def update_user_by_id(self, id):
+        for u in self.get_users():
+            if u.get_key() == id :
+                # TODO QUANDO ESTIVER USANDO BANCO
+                return

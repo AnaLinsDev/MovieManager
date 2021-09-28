@@ -3,9 +3,10 @@ from model.Movie import Movie
 
 class User(Person):
     
-    def __init__(self, name=None, password=None):
+    def __init__(self, name=None, password=None, key=None):
         self._name = name
         self._password = password
+        self._key = key
         self._favoriteMovies = [Movie("Avengers", "2012", 0)]
 
     def get_name(self):
@@ -17,6 +18,9 @@ class User(Person):
         return self._password
     def set_password(self, new):
         self._password = new
+
+    def get_key(self):
+        return self._key
 
     def get_favoriteMovies(self):
         return self._favoriteMovies

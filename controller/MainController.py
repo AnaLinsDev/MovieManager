@@ -1,9 +1,9 @@
-from model.User import User
+from controller.UserController import UserController
 
 class MainController():
     
     def __init__(self):
-        self._users = [User("ana", "123")]
+        self._users = UserController().get_users()
 
     def get_users(self):
         return self._users
