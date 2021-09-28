@@ -1,4 +1,4 @@
-from Person import Person
+from model.Person import Person
 
 class   Manager(Person):
     
@@ -11,9 +11,3 @@ class   Manager(Person):
         return self._password
     def set_password(self, new):
         self._password = new
-
-    def set_id(self, new):
-         self._id = new
-    def get_id(self):
-        return self._id
-        

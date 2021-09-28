@@ -1,20 +1,18 @@
 class Movie:
-    def __init__(self, filme=None, ano=None, chave = None):
-        self._filme = filme
-        self._ano = ano
-        self._id = chave
+    def __init__(self, name=None, year=None, key=None):
+        self._name = name
+        self._year = year
+        self._key = key
 
-    def get_filme(self):
-        return self._filme
-    def set_filme(self, new):
-         self._filme = new
+    def get_name(self):
+        return self._name
+    def set_name(self, new):
+         self._name = new
 
-    def get_ano(self):
-        return self._ano
-    def set_ano(self, new):
-        self._ano = new
+    def get_year(self):
+        return self._year
+    def set_year(self, new):
+        self._year = new
 
-    def set_id(self, new):
-         self._id = new
-    def get_id(self):
-        return self._id
+    def get_key(self):
+        return self._key
