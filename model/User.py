@@ -7,7 +7,7 @@ class User(Person):
         self._name = name
         self._password = password
         self._key = key
-        self._favoriteMovies = [Movie("Avengers", "2012", 0)]
+        self._favoriteMovies = []
 
     def get_name(self):
         return self._name

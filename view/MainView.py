@@ -15,9 +15,16 @@ class MainView():
         password = input( 'Senha: ' )
         
         if name.startswith("admin"):
-            return self._main_controller.login(User(name, password))
+            person = self._main_controller.login(User(name, password))
         else:
-            return self._main_controller.login(Manager(name, password))
+            person = self._main_controller.login(Manager(name, password))
+
+        if person != None :
+            print (" Logado ")
+        else : 
+            print (" Ocorreu um problema ")
+
+        return person  
 
     def register(self):
         print ("\n REGISTER ")
@@ -25,6 +32,13 @@ class MainView():
         password = input( 'Senha: ' )
         
         if name.startswith("admin"):
-            return self._main_controller.register(User(name, password))
+            person = self._main_controller.register(Manager(name, password))
         else:
-            return self._main_controller.register(Manager(name, password))
+            person = self._main_controller.register(User(name, password))
+
+        if person != None :
+            print (" Logado ")
+        else : 
+            print (" Ocorreu um problema ")
+
+        return person 

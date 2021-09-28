@@ -13,5 +13,5 @@ class UserController():
     def update_user_by_id(self, id):
         for u in self.get_users():
             if u.get_key() == id :
-                # TODO QUANDO ESTIVER USANDO BANCO
+                # QUANDO ESTIVER USANDO BANCO
                 return

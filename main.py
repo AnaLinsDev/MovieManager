@@ -1,6 +1,7 @@
 from model.Person import Person
 from view.MainView import MainView
 from view.UserView import UserView
+from view.ManagerView import ManagerView
 
 class Main():
 
@@ -9,6 +10,7 @@ class Main():
 
         self._main_view = MainView()
         self._user_view = UserView()
+        self._manager_view = ManagerView()
         
 
     def get_user(self):  
@@ -41,6 +43,8 @@ answer = main.menu()
 out = False
 
 while out == False :
+
+    # DEFAULT
     while answer != 3 and main._user.get_name() == "":
 
         if main._user.get_name() == "" :
@@ -49,17 +53,11 @@ while out == False :
                 res = main._main_view.login()
                 if res != None:
                     main.set_user(res)
-                    print (" Logado ")
-                else : 
-                    print (" Ocorreu um problema ")
 
             if answer == '2' :
                 res = main._main_view.register()
                 if res != None:
                     main.set_user(res)
-                    print (" Logado ")
-                else : 
-                    print (" Ocorreu um problema ")
 
             if answer == '3' :
                 out = True
@@ -67,54 +65,32 @@ while out == False :
                 break
 
         answer = main.menu()
-    # and  not main._user.get_name().startswith("admin")
-    while answer != 6 and main._user.get_name() != "" :
+
+
+    # USER
+    while answer != 6 and main._user.get_name() != ""  and  not main._user.get_name().startswith("admin"):
 
         if answer == '1' :
             print ("\nFILMES: ")
-            movies = main._user_view.get_movies()
-            for m in movies :
-                print ( m.get_key() , " )  " , m.get_name() , " - " , m.get_year() )
-            print ("\n")
+            main._user_view.get_movies()
 
         if answer == '2' :
             print ("\nFavoritos:  ")
-            movies  = main._user_view.get_favorite_movies(main._user)
-            for m in movies :
-                print ( m.get_key() , " )  " , m.get_name() , " - " , m.get_year() )
-            print ("\n")
+            main._user_view.get_favorite_movies(main._user)
 
         if answer == '3' :
-
-            print ("\nFILMES: ")
-            movies = main._user_view.get_movies()
-            for m in movies :
-                print ( m.get_key() , " )  " , m.get_name() , " - " , m.get_year() )
-            print ("\n")
-
+            print ("\nAdicionar Filme Favorito  ")
             res = main._user_view.add_favorite_movies(main._user)
             if res != None:
-                print ("\nAdicionando Filme Favorito  ")
                 main.set_user(res)
-            else:
-                print("Ocorreu um problema")
-            print ("\n")
+
 
         if answer == '4' :
-                    
-            print ("\nFavoritos:  ")
-            movies  = main._user_view.get_favorite_movies(main._user)
-            for m in movies :
-                print ( m.get_key() , " )  " , m.get_name() , " - " , m.get_year() )
-            print ("\n")
-
             res = main._user_view.rem_favorite_movies(main._user)
             if res != None:
                 print ("\nRemovendo Filme Favorito  ")
                 main.set_user(res)
-            else:
-                print("Ocorreu um problema")
-            print ("\n")
+
 
         if answer == '5' :
             print (" Volte sempre ! ^^ \n\n")
@@ -128,7 +104,34 @@ while out == False :
         answer = main.menu()
 
 
+    # MANAGER
+    while answer != 6 and main._user.get_name() != ""  and  main._user.get_name().startswith("admin"):
 
+        if answer == '1' :
+            main._manager_view.get_movies()
+
+        if answer == '2' :
+            print ("\nAdiconando Filme:  ")
+            main._manager_view.add_movies()
+
+        if answer == '3' :
+            print ("\nRemovendo Filme:  ")
+            main._manager_view.rem_movies()
+
+        if answer == '4' :
+            print ("\nAtualizando Filme:  ")
+            main._manager_view.update_movies()
+
+        if answer == '5' :
+            print (" Volte sempre ! ^^ \n\n")
+            main.set_user(Person("",""))
+            
+        if answer == '6' :
+            out = True
+            print (" Volte sempre ! ^^ \n\n")
+            break 
+            
+        answer = main.menu()
 
 
 
