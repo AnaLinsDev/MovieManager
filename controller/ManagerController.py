@@ -1,22 +1,24 @@
-from model.Person import Person
+from repository.ManagerRepository import managers
 
-class MainController():
+class ManagerController():
     
     def __init__(self):
-        self._users = []
-
+        self._managers = managers
 
     def login(self, person):
-        if person in self._users:
-            return True
+        for p in self._managers:
+            if person.get_name() == p.get_name() and person.get_password() == p.get_password():
+                return p
         else :
-            return False
+            print ( "Não Cadastrado" )
+            return None
 
+    def register(self, person):
 
-    def cadastro(self, newPerson):
-        if newPerson in self._users:
-            return False
+        if person in self._managers:
+            print ( "Já foi cadastrado" )
+            return None
         else :
-            self._users.append(newPerson)
-            return True
+            self._managers.append(person)
+            return person
         

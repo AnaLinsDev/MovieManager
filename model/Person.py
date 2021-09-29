@@ -14,3 +14,7 @@ class Person(ABC):
     @abstractmethod
     def set_password(self, new):
         pass
+    
+    @abstractmethod
+    def get_key(self):
+        pass

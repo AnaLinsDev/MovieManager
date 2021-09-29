@@ -1,3 +1,4 @@
+from view.MenuView import MenuView
 from model.User import User
 from view.UserView import UserView
 from view.ManagerView import ManagerView
@@ -6,7 +7,7 @@ class Main():
 
     def __init__(self, user=""):
         self._user = User("","")
-
+        self._menu_view = MenuView()
         self._user_view = UserView()
         self._manager_view = ManagerView()
         
@@ -51,12 +52,12 @@ while out == False :
         if main.get_user().get_name() == "" :
 
             if answer == '1' :
-                res = main._user_view.login()
+                res = main._menu_view.login()
                 if res != None:
                     main.set_user(res)
 
             if answer == '2' :
-                res = main._user_view.register()
+                res = main._menu_view.register()
                 if res != None:
                     main.set_user(res)
 

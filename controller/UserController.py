@@ -1,11 +1,11 @@
 from model.Movie import Movie
 from model.User import User
-
+from repository.UserRepository import users
 
 class UserController():
     
     def __init__(self):
-        self._users = [User("ana", "123", 0)]
+        self._users = users
 
     def get_users(self):
         return self._users

@@ -6,6 +6,7 @@ class  Manager(Person):
         self._name = name
         self._password = password
         self._key = key
+
     
     def get_name(self):
         return self._name
@@ -16,6 +17,7 @@ class  Manager(Person):
         return self._password
     def set_password(self, new):
         self._password = new
+
 
     def get_key(self):
         return self._key

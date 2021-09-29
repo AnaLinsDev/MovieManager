@@ -1,3 +1,5 @@
 from model.Manager import Manager
 
-Managers = [Manager("julia", "123", 0)]
+managers = [
+    Manager("adminjulia", "123", 0)
+    ]

@@ -1,9 +1,8 @@
-from model.Person import Person
-from model.Movie import Movie
+from model.UserInterface import UserInterface
 
-class User(Person):
+class User(UserInterface):
     
-    def __init__(self, name=None, password=None, key=None):
+    def __init__(self, name=None, password=None,key=None):
         self._name = name
         self._password = password
         self._key = key

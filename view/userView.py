@@ -1,47 +1,10 @@
-from model.Manager import Manager
-from model.User import User
 from controller.MovieController import MovieController
-from controller.UserController import UserController
+
 
 class UserView():
 
     def __init__(self):
-        self._user_controller = UserController()
         self._movie_controller = MovieController()
-
-    def login(self):
-        print ("\n LOGIN ")
-        name = input( 'Nome: ' )
-        password = input( 'Senha: ' )
-        
-        if name.startswith("admin"):
-            person = self._user_controller.login(User(name, password))
-        else:
-            person = self._user_controller.login(Manager(name, password))
-
-        if person != None :
-            print (" Logado ")
-        else : 
-            print (" Ocorreu um problema ")
-
-        return person  
-
-    def register(self):
-        print ("\n REGISTER ")
-        name = input( 'Nome: ' )
-        password = input( 'Senha: ' )
-        
-        if name.startswith("admin"):
-            person = self._user_controller.register(Manager(name, password))
-        else:
-            person = self._user_controller.register(User(name, password))
-
-        if person != None :
-            print (" Logado ")
-        else : 
-            print (" Ocorreu um problema ")
-
-        return person 
         
     def get_movies(self):
         movies =  self._movie_controller.get_movies()
