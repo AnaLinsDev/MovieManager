@@ -1,14 +1,16 @@
-class Person():
-    def __init__(self, name=None, password=None):
-        self._name = name
-        self._password = password
+from abc import ABC, abstractmethod
 
+class Person(ABC):
+    @abstractmethod
     def get_name(self):
-        return self._name
+        pass
+    @abstractmethod
     def set_name(self, new):
-         self._name = new
+         pass
 
+    @abstractmethod
     def get_password(self):
-        return self._password
+        pass
+    @abstractmethod
     def set_password(self, new):
-        self._password = new
+        pass

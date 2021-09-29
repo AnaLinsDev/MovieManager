@@ -1,11 +1,11 @@
-from model.Person import Person
+from model.User import User
 from view.UserView import UserView
 from view.ManagerView import ManagerView
 
 class Main():
 
     def __init__(self, user=""):
-        self._user = Person("","")
+        self._user = User("","")
 
         self._user_view = UserView()
         self._manager_view = ManagerView()
@@ -94,7 +94,7 @@ while out == False :
 
         if answer == '5' :
             print (" Volte sempre ! ^^ \n\n")
-            main.set_user(Person("",""))
+            main.set_user(User("",""))
             
         if answer == '6' :
             out = True
@@ -124,7 +124,7 @@ while out == False :
 
         if answer == '5' :
             print (" Volte sempre ! ^^ \n\n")
-            main.set_user(Person("",""))
+            main.set_user(User("",""))
             
         if answer == '6' :
             out = True
